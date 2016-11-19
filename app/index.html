@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html ng-app="fashion">
+<html ng-app="Fashion">
   <head>
     <title>Autumn Fashion Fix</title>
     <meta name="viewport" content="width=device-width", initial-scale="1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="styles/normalize.css">
   </head>
-  <body>
+  <body ng-controller="MainCtrl as main">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="scripts/app.js"></script>
-    <div>
+    <script src="scripts/controllers/MainCtrl.js"></script>
+    <script src="scripts/services/Data.js"></script>
+
+
+    <div ng-repeat="post in main.posts">
       <p>
-        Content will go here!
+        {{ post.item_id }}
       </p>
       <p>
-        I am {{2 + 6}}
+        {{ post.item_data.text}}
       </p>
     </div>
 

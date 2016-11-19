@@ -1,1 +1,1 @@
-angular.module('fashion', [ ]);
+angular.module("Fashion", []);
