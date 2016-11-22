@@ -4,23 +4,54 @@
     <title>Autumn Fashion Fix</title>
     <meta name="viewport" content="width=device-width", initial-scale="1">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
   </head>
   <body ng-controller="MainCtrl as main">
+    <div class="navbar navbar-static-top navbar-dark bg-inverse" style="background-color: black;">
+      <div class=container-fluid>
+        <a href="#" class="navbar-brand">AFF</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class='col-sm-6 col-md-4' ng-repeat='post in main.posts'>
+          <div ng-switch="post.service_name">
+            <div ng-switch-when="Manual">
+              <div class="card">
+                <img ng-src="{{ post.item_data.image_url }}" style="height:280px; width: 100%; display:block;"/> <br />
+                <div class="caption">
+                  <p>{{ post.item_data.text }}</p> <br />
+                  <a href="{{post.item_data.link}}">{{post.item_data.link_text}}</a>
+                </div>
+              </div>
+            </div>
+            <div ng-switch-when="Twitter">
+              <div class="card">
+                <div class=text-center>
+                  <h2>{{ post.item_data.user.username }}</h2>
+                  <p>{{ post.item_data.tweet }}</p>
+                </div>
+              </div>
+            </div>
+              <div ng-switch-when="Instagram">
+                <div class="card">
+                  <a href="{{ post.item_data.link }}"><img src="{{ post.item_data.image.large }}" style="height:280px; width: 100%; display:block;"/></a><br />
+                  <h4>{{ post.item_data.user.username }}</h4>
+                  <p>{{ post.item_data.caption }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/MainCtrl.js"></script>
     <script src="scripts/services/Data.js"></script>
-
-
-    <div ng-repeat="post in main.posts">
-      <p>
-        {{ post.item_id }}
-      </p>
-      <p>
-        {{ post.item_data.text}}
-      </p>
-    </div>
 
   </body>
 </html>

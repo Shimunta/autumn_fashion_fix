@@ -7,4 +7,5 @@ Documentation and Approach
   4) Next add new responsive design (filter and more button).
   5) Fix functionality and response. Ensure the site is behaving as intended.
   6) Polish and think of ways to improve on the product.
-  
+
+2) Learned and made use of ng-switch. This allows me to generate certain HTML given the type of post we looking at. Now that the page has structure, we will need to add some functionality with a more button and filter. 
