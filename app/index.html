@@ -13,9 +13,22 @@
       </div>
     </div>
 
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon"></div>
+          <!-- ng-model connects with our ng-repeat to search by keyword typed in by user -->
+          <input type="text" class="form-control" placeholder="Search by Keyword" ng-model="searchKeyword">
+
+        </div>
+      </div>
+    </form>
+
     <div class="container">
       <div class="row">
-        <div class='col-sm-6 col-md-4' ng-repeat='post in main.posts'>
+        <!-- ng-repeat doing alot to present data, limit is set in the mainCtrl, filter connects with ng-model to generate results -->
+        <div class='col-sm-6 col-md-4' ng-repeat="post in main.posts | orderBy: post | limitTo: limit | filter:searchKeyword">
+          <!-- ng-switch will activate based on which service_name is being called, this allows for dynamic html -->
           <div ng-switch="post.service_name">
             <div ng-switch-when="Manual">
               <div class="card">
@@ -44,7 +57,13 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-sm-2 col-md-1 col-sm-offset-5">
+            <button class="btn btn-large btn-info" ng-click="loadMore()">Load More</button>
+          </div>
+        </div>
       </div>
+
     </div>
 
 
